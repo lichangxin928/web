@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>下拉菜单</title>
+	</head>
+	<style type="text/css">
+		*{
+			padding: 0px;
+			margin: 0px;
+		}
+		#first{
+			width: 300px;
+			margin: 100px auto;
+			list-style: none;
+		}
+		#first>li{
+			border: 1px solid #000;
+			border-bottom: none;
+			text-indent: 2rem;
+			width: 300px;
+			line-height: 35px;
+			position: relative;
+		}
+		#first>li:first-child{
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+		}
+		#first>li:last-child{
+			border-bottom:1px solid #000 ;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+		.second{
+			list-style: none;
+			display:none ;
+		}
+		.second>li{
+			background-color: #ccc;
+		}
+		.second>li:hover{
+			background-color: red;
+		}
+		#first>li>span{
+			background: url("img/arrow_right.png");
+			display: inline-block;
+			background-repeat: no-repeat;
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+		#first>.current>span{
+			transform: rotate(90deg);
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$("#first>li").click(function(){
+				$(this).children(".second").slideDown(1000);
+				$(this).siblings().children(".second").slideUp(1000);
+				$(this).addClass("current");
+				$(this).siblings().removeClass("current");
+			})
+		})
+	</script>
+	<body>
+		<ul id="first">
+			<li>一级标题<span></span>
+				<ul class="second">
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+				</ul>
+			</li>
+			<li>一级标题<span></span>
+				<ul class="second">
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+				</ul>
+			</li>
+			<li>一级标题<span></span>
+				<ul class="second">
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+				</ul>
+			</li>
+			<li>一级标题<span></span>
+				<ul class="second">
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+				</ul>
+			</li>
+			<li>一级标题<span></span>
+				<ul class="second">
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+					<li>二级标题</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+</html>

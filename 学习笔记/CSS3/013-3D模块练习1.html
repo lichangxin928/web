@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            perspective: 500px;
+        }
+        ul{
+            width: 200px;
+            height: 200px;
+            /* border: 1px solid #000; */
+            box-sizing: border-box;
+            margin: 100px auto;
+            position: relative;
+            transform: rotateY(0deg) rotateX(0deg);
+            transform-style:preserve-3d ;
+            animation: roll 10s linear 0s infinite normal ;
+        }
+        ul li{
+            
+            list-style: none;
+            width: 200px;
+            height: 200px;
+            font-size: 60px;
+            text-align: center;
+            line-height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            
+        }
+        ul li:nth-child(1){
+            /* background-color: red; */
+            transform: rotateX(90deg) translateZ(100px) scale(2, 1);
+        }
+        ul li:nth-child(2){
+            /* background-color: yellow; */
+            transform: rotateX(180deg) translateZ(100px) scale(2, 1);
+        }
+        ul li:nth-child(3){
+            /* background-color: blue; */
+            transform: rotateX(270deg) translateZ(100px) scale(2, 1);
+        }
+        ul li:nth-child(4){
+            /* background-color: purple; */
+            transform: rotateX(360deg) translateZ(100px) scale(2, 1);
+        }
+        ul li:nth-child(5){
+            /* background-color: pink; */
+            transform: translateX(100px) rotateY(90deg);
+        }
+        ul li:nth-child(6){
+            /* background-color: skyblue; */
+            transform: translateX(-100px) rotateY(-90deg);
+            
+        }
+        /* */
+        ul:hover{
+            /*动画添加给谁, 就让谁停止*/
+            animation-play-state: paused;
+        }
+        ul:hover li{
+            opacity: 0.5;
+        }
+        ul li:hover{
+            opacity: 1;
+        }
+        ul li img{
+            width: 200px;
+            height: 200px;
+        }
+        @keyframes roll{
+            from{
+                transform: rotateX(0deg);
+            }to{
+                transform: rotateX(360deg);
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <ul>
+    <li><img src="../img/ad1.jpg" alt=""></li>
+    <li><img src="../img/ad2.jpg" alt=""></li>
+    <li><img src="../img/ad3.jpg" alt=""></li>
+    <li><img src="../img/ad4.jpg" alt=""></li>
+    <!-- <li><img src="../img/banner1.jpg" alt=""></li>
+    <li><img src="../img/banner1.jpg" alt=""></li> -->
+</ul>
+</body>
+</html>

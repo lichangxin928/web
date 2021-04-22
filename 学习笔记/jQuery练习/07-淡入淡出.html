@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淡入淡出</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;
+        }
+
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $("button").eq(0).click(function(){
+                $("div").fadeIn(1000,function(){
+                   
+                })
+            })
+            $("button").eq(1).click(function(){
+                $("div").fadeOut(1000,function(){
+                   
+                })
+            })
+            $("button").eq(2).click(function(){
+                $("div").fadeToggle(1000,function(){
+                   
+                })
+            })
+            $("button").eq(3).click(function(){
+                $("div").fadeTo(1000,0.2,function(){
+                   
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <button>淡入</button>
+    <button>淡出</button>
+    <button>切换</button>
+    <button>淡入到</button>
+    <div></div>
+</body>
+</html>

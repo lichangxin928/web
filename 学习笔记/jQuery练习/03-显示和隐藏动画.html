@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: green;
+				display: none;
+			}
+		</style>
+		<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//显示
+				$("button").eq(0).click(function(){
+					$("div").show(1000);
+				})
+				//隐藏
+				$("button").eq(1).click(function(){
+					$("div").hide(1000,function(){
+						alert("hello world")
+					});
+				})
+				//切换
+				$("button").eq(2).click(function(){
+					$("div").toggle(1000);
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<button type="button">显示</button>
+		<button type="button">隐藏</button>
+		<button type="button">切换</button>
+		<div id="box">
+			
+		</div>
+	</body>
+</html>

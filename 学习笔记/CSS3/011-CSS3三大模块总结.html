@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1. 过渡模块
+
+            关键字：transition
+            连写：transition: 过渡属性 过渡时间 过渡速度 过渡延迟
+            过渡属性：
+                transition-property：width，height
+            过渡时间：
+                transition-duration：times
+            过渡速度：
+                transition-timing-function：linear ease ease-in ease-out ease-in-out
+            过渡延迟：
+                transition-delay：times  延迟可以各个属性用逗号隔开
+            过渡三要素：
+                1.要告诉系统哪些元素需要进行过渡
+                2.过渡元素要经过变化
+                3.要设置过渡元素的持续时间
+            当所有过渡属性的过渡时间相同时：transition：all 0s   
+
+        2. 2D转换模块
+
+            关键字：transform
+            连写：transform：rotate() translate() scale()
+            作用：主要是对元素从2D角度进行操作，例如元素的旋转，放缩，移动等
+            对元素的主要操作：
+                1.旋转：
+                    transform：rotate(ndeg);
+                    旋转多少度，当对同一个元素设置多个旋转属性时，后面的会覆盖前面的
+                    默认是相对于中心点进行旋转，可以自己设置关于XYZ轴旋转，平移同理
+                    格式：rotateX(),rotateY(),rotateZ();
+                2.移动：
+                    transform：translate(x,y)；
+                    对元素进行平移，在x/y方向上进行平移
+                3.放缩：
+                    transform：scale(x,y);
+                    表示对元素x/y轴方向上进行缩放，默认为一
+                注意：当父元素放缩过后子元素也会跟着放缩
+            形变中心点：transform-origin：x,y；
+            作用：改变对元素进行2D转换时元素的中心点，xy能用像素为单位，也能使用top、left等关键字
+            近大远小效果：perspective：px；
+            设置透明度：opacity:;
+
+        3. 动画模块
+
+        1.过渡和动画之间的异同
+            1.1不同点
+                过渡必须人为的触发才会执行动画
+                动画不需要人为的触发就可以执行动画
+
+            1.2相同点
+                过渡和动画都是用来给元素添加动画的
+                过渡和动画都是系统新增的一些属性
+                过渡和动画都需要满足三要素才会有动画效果
+
+        三要素：
+            1.告诉系统需要执行哪个动画
+                animation-name:name;
+            2.告诉系统我们需要自己创建一个名称叫做lnj的动画
+                @keyframes name{
+                    from{
+
+                    }
+                    to{
+
+                    }
+                }
+            3.告诉系统动画持续的时长
+                animation-duration:time;
+        其他属性：
+            多少秒后开始执行：
+                animation-delay:times;
+            执行速度：
+                animation-timing-function:linear;
+            告诉系统要执行几次：
+                animation-ineration-count:3;
+            告诉系统是否需要执行往返动画
+                animation-direction:
+            取值:
+                normal, 默认的取值, 执行完一次之后回到起点继续执行下一次
+                alternate, 往返动画, 执行完一次之后往回执行下一次
+            告诉动画是运动还是暂停：
+                animation-play-state:running/pauesd;
+            定义动画的另一种写法：
+                @keyframes name {
+                    0%{}
+                    25%{}
+                    50%{}
+                    75%{}
+                    100%{}
+                }
+            会自动按照百分百的大小来先后执行
+
+            动画是有一定的状态的
+                1.等待状态
+                2.执行状态
+                3.结束状态
+
+            animation-fill-mode作用:
+                指定动画等待状态和结束状态的样式
+                取值:
+                none: 不做任何改变
+                forwards: 让元素结束状态保持动画最后一帧的样式
+                backwards: 让元素等待状态的时候显示动画第一帧的样式
+                both: 让元素等待状态显示动画第一帧的样式, 让元素结束状态保持动画最后一帧的样式
+            
+            1.动画模块连写格式
+                animation:动画名称 动画时长 动画运动速度 延迟时间 执行次数 往返动画;
+            2.动画模块连写格式的简写
+                animation:动画名称 动画时长;
+            3.动画模块暂停
+                animation-play-state:paused;
+     -->
+
+</body>
+</html>

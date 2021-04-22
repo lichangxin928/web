@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border:1px solid #000;
+        }
+        .one{
+            background-color: red;
+        }
+        .two{
+            background-color: skyblue;
+        }
+    </style>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+        //编写jQuery代码
+        
+        
+        
+        })
+        $(document).ready(function(){
+            // alert("hello world")
+            $("input").eq(0).on("click",function(){
+                /*
+                    第一个参数: 接收一个对象, 可以在对象中修改属性
+                    第二个参数: 指定动画时长
+                    第三个参数: 指定动画节奏, 默认就是swing
+                    第四个参数: 动画执行完毕之后的回调函数
+                */
+                $(".one").animate({
+                    width:"+=100px"
+                },1000,function(){
+                    alert("执行完毕")
+                })
+                
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <input type="button" value="开始移动">
+    <input type="button" value="增加宽高">
+    <input type="button" value="隐藏">
+    <div class="one"></div>
+    <div class="two"></div>
+</body>
+</html>

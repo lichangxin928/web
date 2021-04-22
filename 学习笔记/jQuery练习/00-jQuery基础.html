@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				border: #000000 solid 3px;
+			}
+			
+		</style>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script type = "text/javascript">
+			 // 加载模式:
+			 
+			/* 
+			
+				 
+				 js固定写法：
+					window.onload = function(){}
+				 jQuery固定写法：
+					$(document).ready(function(){})
+					$(function(){})
+					
+				区别：
+					1.js会等到DOM元素和图片全部加载完成，而jquery不会等待图片加载
+					2.js编写多个入口函数会覆盖前面的入口函数，而jquery不会
+				
+			 */
+			
+			// jQuery冲突解决：
+			
+			/* 
+			
+				1.jQuery.noConflict();
+				此时使用：jQuery(function(){})
+				2.var oj = jQuery.noConflict();
+				相当于自定义一个访问符号：
+				oj(function(){})
+				
+			 */
+			
+			// 核心函数：
+			
+			/* 
+			
+				jQuery可以传入多种对象:
+					1.接收一个方法：
+						%(function(){})
+					2.接收一个字符串：
+						%("name"),会返回一个jQuery对象，是一个伪函数，可以用eq(index)或get(index)
+						来获取其中的一个对象
+					3.接收一个代码片段：
+						var $e = $("<p></p>")
+						将返回一个jQuery对象，可以用append()，remove()来添加进实际代码或移除
+					4.接收一个DOM元素:
+						var span = document.getElementsByTagName("span")[0];
+						var $span = $(span);
+						将其封装成一个jQuery对象返回
+			
+			 */
+			
+			// 静态方法和实例方法：
+			
+			/* 
+			
+				静态方法：
+					Class.MethodName = function(){}
+				实例方法：
+					Class.prototype。MethodName = function(){};
+				
+			 
+			 */
+			
+			// js中foreach方法和jq中的each方法区别：
+			
+			/*  
+			
+				1.js中的foreach()方法只能遍历数组，不能遍历伪数组，并且吃方法是实例方法，
+				在数组对象中调用：
+					arr = [1,2,3,4,5,6]
+					arr.forEach(function(value,index){})
+				2.jq中的each方法能遍历数组，也能遍历伪数组，并且此方法为静态方法
+				通过$.each()来调用。
+					$.each(arr,function(index,value){})
+					
+			 */
+			
+			// js中的map()方法和jq中的map()方法的区别：
+			
+			/* 
+			 
+				var obj = {0:1, 1:3, 2:5, 3:7, 4:9, length:5};
+				var res = $.map(obj, function (value, index) {
+					console.log(index, value);
+					return value + index;
+				});
+				
+				var res2 = $.each(obj, function (index, value) {
+					console.log(index, value);
+					return value + index;
+				});
+				each静态方法默认的返回值就是, 遍历谁就返回谁
+				map静态方法默认的返回值是一个空数组
+				
+				each静态方法不支持在回调函数中对遍历的数组进行处理
+				map静态方法可以在回调函数中通过return对遍历的数组进行处理, 然后生成一个新的数组返回
+			 
+			 */
+			
+			// jq中的其他静态方法：
+			
+			/* 
+			 
+				$.trim()去除两边的空格
+				$.isWindow()是否伪window类型
+				$.isArray() $.isFunction() 同理
+				jQuery的本质是一个匿名函数
+				$.holdReady(true) 暂停raedy执行
+				$.holdReady(false) 继续ready执行
+			 
+			 */
+			
+			// jq内容选择器：
+			
+			/* 
+			 
+				empty: 找到既没有文本也没有子元素的指定元素
+				parent：找到有文本或者有子元素的指定元素
+				contains(text): 找到包含指定文本内容的元素
+				has(selector): 找到包含指定元素的元素
+			 
+			 */
+			
+			// 属性和属性节点
+			
+			/* 
+			 
+				1.什么是属性?
+				对象身上保存的变量就是属性
+				2.如何操作属性?
+				对象.属性名称 = 值;
+				对象.属性名称;
+				对象["属性名称"] = 值;
+				对象["属性名称"];
+				
+				3.什么是属性节点?
+				<span name = "it666"></span>
+				在编写HTML代码时,在HTML标签中添加的属性就是属性节点
+				在浏览器中找到span这个DOM元素之后, 展开看到的都是属性
+				在attributes属性中保存的所有内容都是属性节点
+				
+				4.如何操作属性节点?
+				DOM元素.setAttribute("属性名称", "值");
+				DOM元素.getAttribute("属性名称");
+				
+				5.属性和属性节点有什么区别?
+				任何对象都有属性, 但是只有DOM对象才有属性节点
+				 
+			 
+			 */
+			
+			// attr()/removeAttr()方法：
+			// prop()和removeProp()方法：
+			
+			/* 
+			 
+				1.attr():传递一个参数时，代表获取属性节点的值，无论找到多少个元素，都只会获得
+				第一个元素的属性节点的值，传递两个参数时，代表设置属性节点的值，找到多少个就
+				设置多少个，如果设置的不存在，系统会自动新增。
+				2.removeAttr()：删除找到的所有元素中的属性节点的值,删除多个时用空格隔开。
+				
+				特点和Attr()一致，当返回true和false时用prop()其他情况用Attr().
+			 
+			 */
+			
+			// 对类的相关操作方法：
+			
+			/* 
+			 
+				1.addClass(class|fn)
+				作用: 添加一个类
+				如果要添加多个, 多个类名之间用空格隔开即可
+				
+				2.removeClass([class|fn])
+				作用: 删除一个类
+				如果想删除多个, 多个类名之间用空格隔开即可
+				
+				3.toggleClass(class|fn[,sw])
+				作用: 切换类
+				有就删除, 没有就添加，传递多个参数有的有有的没有时，有的属性会被删除，没有的属性会被添加
+			 
+			 */
+			
+			// 对文本相关的操作方法
+			
+			/* 
+			 
+			 1.html([val|fn])
+			 和原生JS中的innerHTML一模一样
+			 2.text([val|fn])
+			 和原生JS中的innerText一模一样
+			 3.val([val|fn|arr])
+			 .value一样
+			 
+			 */
+			
+			// jq操作CSS样式
+			
+			/* 
+			 
+			 // 1.逐个设置
+			 $("div").css("width", "100px");
+			 $("div").css("height", "100px");
+			 $("div").css("background", "red");
+			 
+			 // 2.链式设置
+			 // 注意点: 链式操作如果大于3步, 建议分开
+			 $("div").css("width", "100px").css("height", "100px").css("background", "blue");
+			 
+			 // 3.批量设置
+			 $("div").css({
+			     width: "100px",
+			     height: "100px",
+			     background: "red"
+			 });
+			 
+			 // 4.获取CSS样式值
+			 console.log($("div").css("background"));;
+			 
+			 */
+			
+			// jq位置和尺寸
+			
+			/* 
+			 
+			 获取元素宽度：$("name").width();
+			 获取元素距离窗口的偏移量：$("name").offset().left;
+			 获取元素距离定位元素的偏移量：$("name").position.left;
+			 
+			 // 设置元素宽度
+			 $("name").width("100px");
+			 $("name").offset({
+				 left:10px;
+			 })
+			 position方法只能获取，不能设置，如果要设置，可以用$("name").css({left:10px})来设置；
+			 
+			 
+			 */
+			
+			// jq中的scrollTop()方法
+			
+			/* 
+			 
+			 1.获取网页滚动：%("html").scorllTop() + %("body").scorllTop();
+			 (加号的目的是为了更好的兼容性)
+			 2.设置网页滚动：%("html,body").scorllTop();(兼容性同理)
+			 
+			 */
+			
+			// jq事件绑定
+			
+			/* 
+			 
+			 1.eventName(fn);
+			 编码效率略高/ 部分事件jQuery没有实现,所以不能添加
+			 2.on(eventName, fn);
+			 编码效率略低/ 所有js事件都可以添加
+			 
+			 注意点:
+			 可以添加多个相同或者不同类型的事件,不会覆盖,会顺序执行
+			 */
+			
+			// 事件移除off()方法
+			
+			/* 
+			 
+			 // off方法如果不传递参数, 会移除所有的事件
+			 // $("button").off();
+			 // off方法如果传递一个参数, 会移除所有指定类型的事件
+			 // $("button").off("click");
+			 // off方法如果传递两个参数, 会移除所有指定类型的指定事件
+			 // %("button").off("click",test1) (要注意的是第二个参数不用打双引号，传入的不是一个字符串)
+			 
+			 */
+			
+			// 事件冒泡和默认行为
+			
+			/* 
+			 
+			 1.什么是事件冒泡?
+			 2.如何阻止事件冒泡
+			 3.什么是默认行为?
+			 4.如何阻止默认行为
+			 
+			 $(".son").click(function (event) {
+			     alert("son");
+			     // return false;
+			     event.stopPropagation();
+			 });
+			 $(".father").click(function () {
+			     alert("father");
+			 });
+			 $("a").click(function (event) {
+			     alert("弹出注册框");
+			     // return false;
+			     event.preventDefault();
+			 });
+			 
+			 */
+			
+			// 事件自动触发：trigger() 和 triggerHandler()
+			
+			/* 
+			 
+			 trigger: 如果利用trigger自动触发事件,会触发事件冒泡
+			 triggerHandler: 如果利用triggerHandler自动触发事件, 不会触发事件冒泡
+			 
+			 */
+			
+			// 自定义事件
+			
+			/* 
+			 
+			 想要自定义事件, 必须满足两个条件
+			 1.事件必须是通过on绑定的
+			 2.事件必须通过trigger来触发
+			 
+			 $(".son").on("myClick", function () {
+			     alert("son");
+			 });
+			 $(".son").triggerHandler("myClick");
+			 
+			 */
+			
+			// 事件命名空间
+			
+			/* 
+			 
+			 想要事件的命名空间有效,必须满足两个条件
+			 1.事件是通过on来绑定的
+			 2.通过trigger触发事件
+			 注意：
+			 利用trigger触发子元素带命名空间的事件, 那么父元素带相同命名空间的事件也会被触发. 而父元素没有命名空间的事件不会被触发
+			 利用trigger触发子元素不带命名空间的事件,那么子元素所有相同类型的事件和父元素所有相同类型的事件都会被触发
+			 
+			 */
+			
+			// 事件委托
+			
+			/* 
+			 
+			 
+			 1.什么是事件委托?
+			 请别人帮忙做事情, 然后将做完的结果反馈给我们
+			
+			 $("button").click(function () {
+			     $("ul").append("<li>我是新增的li</li>");
+			 })
+			 
+			 
+			 在jQuery中,如果通过核心函数找到的元素不止一个, 那么在添加事件的时候,jQuery会遍历所有找到的元素,给所有找到的元素添加事件
+			
+			 $("ul>li").click(function () {
+			     console.log($(this).html());
+			 });
+			 
+			 以下代码的含义, 让ul帮li监听click事件
+			 之所以能够监听, 是因为入口函数执行的时候ul就已经存在了, 所以能够添加事件
+			 之所以this是li,是因为我们点击的是li, 而li没有click事件, 所以事件冒泡传递给了ul,ul响应了事件, 既然事件是从li传递过来的,所以ul必然指定this是谁
+			 
+			 $("ul").delegate("li", "click", function () {
+			     console.log($(this).html());
+			 });
+			 
+			
+			 $(".son").on("click.zs", function () {
+			     alert("click1");
+			 });
+			 $(".son").on("click.ls", function () {
+			     alert("click2");
+			 });
+			 // $(".son").trigger("click.zs");
+			 $(".son").trigger("click.ls");
+			 
+			 */
+			
+			// delegate()
+			
+			/* 
+			 
+			 delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。
+			 
+			 使用 delegate() 方法的事件处理程序适用于当前或未来的元素（比如由脚本创建的新元素）。
+			 
+			 */
+			
+			// 移入移出事件
+			
+			/*
+			
+			mouseover/mouseout事件, 子元素被移入移出也会触发父元素的事件
+			$(".father").mouseover(function () {
+			    console.log("father被移入了");
+			});
+			$(".father").mouseout(function () {
+			    console.log("father被移出了");
+			});
+			mouseenter/mouseleave事件, 子元素被移入移出不会触发父元素的事件
+			推荐大家使用
+			$(".father").mouseenter(function () {
+			    console.log("father被移入了");
+			});
+			$(".father").mouseleave(function () {
+			    console.log("father被移出了");
+			});
+			$(".father").hover(function () {
+			    console.log("father被移入了");
+			},function () {
+			    console.log("father被移出了");
+			});
+			$(".father").hover(function () {
+			    console.log("father被移入移出了");
+			});
+			
+			*/
+			
+			
+			
+			
+			$(function(){
+				var $div = $("div");
+				console.log($div)
+				//不能用传统的数组下标来获取，调用eq()方法返回相应的jQuery元素
+				//eq()方法和get()方法的不同在于一个返回jQuery类型元素另一个返回DOM元素
+				$div.eq(1).click(function(){
+					$div.css({
+						background: "red"
+					});
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		
+	</body>
+</html>

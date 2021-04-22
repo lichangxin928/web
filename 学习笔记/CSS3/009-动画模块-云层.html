@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            margin-top: 100px;
+            height: 500px;
+            background-color: skyblue;
+            position: relative;
+            animation: back 5s linear 0s infinite alternate;
+            overflow: hidden;
+        }
+        li{
+            width: 400%;
+            height: 500px;
+            position: absolute;  
+            left: 0;
+            top: 0;
+        }
+        ul li:nth-child(1){
+            background-image:url("../img/cloud_one.png");
+            animation: one 30s linear 0s infinite alternate;
+        }
+        
+        ul li:nth-child(2){
+            background-image: url("../img/cloud_two.png");
+            animation: one 30s linear 0s infinite alternate;
+        }
+        ul li:nth-child(3){
+            background-image: url("../img/cloud_three.png");
+            animation: one 30s linear 0s infinite alternate;
+        }
+        @keyframes back{
+            from{
+                background-color: skyblue;
+            }to{
+                background-color: black;
+            }
+        }
+        @keyframes one{
+            from{
+                margin-left:0 ;
+            }to{
+                margin-left: -100%;
+            }    
+        }
+        @keyframes two{
+            from{
+                margin-left:0 ;
+            }to{
+                margin-left: -200%;
+            }   
+        }
+        @keyframes three{
+            from{
+                margin-left:0 ;
+            }to{
+                margin-left: -300%;
+            }   
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

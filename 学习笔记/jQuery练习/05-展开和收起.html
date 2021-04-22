@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>  
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			#side{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				display: none;
+			}
+		</style>
+		<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("button").eq(0).click(function(){
+					$("div").slideDown(1000,function(){
+						/* 展开结束后编写的函数 */
+					})
+				})
+				$("button").eq(1).click(function(){
+					$("div").slideUp(1000,function(){
+						/* 收起后运行的函数 */
+					})
+				})
+				$("button").eq(2).click(function(){
+					$("div").slideToggle(1000,function(){
+						
+					})
+				})
+			})
+			/* 
+				下拉和收起的方法与显示与隐藏的方法相同，可以向其传递两个参数一个为执行
+				的时间（ms）,另一个则能向其传递一个方法，显示或者隐藏后执行的方法。
+			 
+			 */
+		</script>
+	</head>
+	<body>
+		<button type="button">展开</button>
+		<button type="button">收起</button>
+		<button type="button">切换</button>
+		<div id="side">
+			
+		</div>
+	</body>
+</html>

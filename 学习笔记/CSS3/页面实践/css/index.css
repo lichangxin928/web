@@ -1,0 +1,28 @@
+.top{
+    height: 60px;
+    width: 100%;
+    background-color: black;
+
+}
+.top .top_in{
+    width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    background-color: yellow;
+}
+.banner{
+    height: 860px;
+    width: 100%;
+    background-color: skyblue;
+}
+.content{
+    height: 1883px;
+    width: 100%;
+    background-color: aquamarine;
+
+}
+.footer{
+    height: 396px;
+    width: 100%;
+    background-color: yellow;
+}

@@ -14,7 +14,7 @@ var fs = require('fs')
  *          error 就是错误对象
  * 
  */
-  fs.writeFile('hello.txt','大家好，我是通過node.js 写入的文件',function(error){
+  fs.writeFile('05-hello.txt','大家好，我是通過node.js 写入的文件',function(error){
     if(error){
         console.log(error);
     }else{

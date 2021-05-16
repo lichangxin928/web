@@ -10,12 +10,17 @@ server.listen(8888,function(){
 server.on("request",function(req,res){
     res.setHeader("Content-Type","text/html;charset=utf-8");
     // res.end("你好，世界");
-    fs.readFile("../resource/index.html",function(err,data){
-        if(err){
-            res.setHeader("Content-Type","text/plain;charset=utf-8");
-            res.end("文件读取失败，请稍后再试");
-        }else{
-            res.end(data);
-        }
-    })
+    if(req.url == '/'){
+        fs.readFile("../resource/index.html",function(err,data){
+            if(err){
+                res.setHeader("Content-Type","text/plain;charset=utf-8");
+                res.end("文件读取失败，请稍后再试");
+            }else{
+                res.end(data);
+            }
+        })
+    }
+    else{
+        res.end();
+    }
 })

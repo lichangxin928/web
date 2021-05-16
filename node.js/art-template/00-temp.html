@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 入门 -->
+    <h1>{{people.name}}</h1>
+    <h2>{{people.age}}</h2>
+
+
+    <!-- 标准语法 -->
+    <p>{{people.name}}</p>
+    <p>{{ 1 + 1 }}</p>
+    <p>{{ sum.a > sum.b ? 'a 大于 b' : 'a 不大于 b' }}</p>
+
+    <!-- 原始语法 -->
+    <p><%= people.name%></p>
+    <p><%= 1 + 1 %></p>
+    <p><%= sum.a > sum.b ? 'a 大于 b':'a 不大于 b' %></p>
+
+    <!-- 原文输出 可以解析数据 -->
+    <p>{{@data.content}}</p>
+
+    <!-- 条件判断 -->
+    <!-- 可以根据条件来绝对显示哪一块代码 -->
+
+    <!-- 标准语法 -->
+    {{if 条件}}....{{/if}}
+    {{if v1}}...{{else if v2}}...{{/if}}
+
+    <!-- 原始语法 -->
+    ....
+
+    <!-- 循环语法 -->
+    <!-- 标准语法 -->
+
+    {{each target}}
+        {{$index}}{{$value}}
+    {{/each}}
+
+    <!-- 子模板 -->
+    {{include "模板路径"}}
+
+    <!-- 模板继承 -->
+    {{block e'head'}}{{/block}}
+
+    {{extend 'html路径'}}
+    {{block 'head'}} <scripte></scripte> {{/block}}
+
+    <!-- 模板配置 -->
+
+
+</body>
+</html>

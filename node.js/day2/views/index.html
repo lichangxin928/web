@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>电影排行榜</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 360px;
+				height: 600px;
+				border: #000000 solid 1px;
+				margin: auto;
+				margin-top: 50px;
+			}
+			#title{
+				padding-left: 10px;
+				line-height: 30px;
+				color: deeppink;
+				font-size: 20px;
+				border-bottom: #CCCCCC dashed 1px;
+			}
+			#box li{
+				list-style: none;	/* 去除列表小圆点 */
+				padding: 5px 10px;
+				border: #CCCCCC dashed 1px;
+			}
+			#box li span{
+				display: inline-block;	/* 让span能够设置宽高 */
+				width: 20px;
+				height: 20px;
+				background-color: #CCCCCC;
+				text-align: center;
+				margin-right:10px ;
+			}
+			/* nth-child(-n+3) 表示子元素索引在3以下的 */
+			#box li:nth-child(-n+3) span{
+				background-color: deeppink;
+			}
+			.content{
+				/* width:340px;
+				height: 140px; */
+				overflow: hidden;	
+				/* 表示让超出部分隐藏,并且设置了overflow能够让浮动的元素撑大div*/
+				margin-top: 5px;
+				display:none ;
+			}
+			.content img{
+				width: 100px;
+				height: 120px;
+				float: left;
+			}
+			.content p{
+				width: 210px;
+				height: 100px;
+				float: right;
+				font-size: 15px;
+				line-height: 20px;
+			}
+			.current .content{
+			    display: block;
+			}
+		</style>
+		<script src="../public/lib/jquery-1.12.4.js"></script>
+		<script >
+			/* 
+				hover(fn1,fn2):
+				此方法是当鼠标移到一个子元素时就执行fn1,移出时就执行fn2
+				如果只指定一个函数，则 mouseenter 和 mouseleave 都执行它。
+			 */
+			$(function(){
+				$("li").hover(function () {
+				    $(this).addClass("current");
+				}, function () {
+				    $(this).removeClass("current");
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<div id="box">
+				<h1 id="title">电影排行榜</h1>
+				<ul>
+					<li><span>1</span>电影名称
+						<div class="content">
+							<img src="../public/img/zl.jpg" >
+							<p>简介：故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入了一场</p>
+						</div>
+					</li>
+					<li><span>2</span>电影名称
+						<div class="content">
+							<img src="../public/img/zl.jpg" >
+							<p>简介：故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入了一场</p>
+						</div>
+					</li>
+					<li><span>3</span>电影名称
+						<div class="content">
+							<img src="../public/img/zl.jpg" >
+							<p>简介：故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入了一场</p>
+						</div>
+					</li>
+					<li><span>4</span>电影名称
+						<div class="content">
+							<img src="../public/img/zl.jpg" >
+							<p>简介：故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入了一场</p>
+						</div>
+					</li>
+					<li><span>5</span>电影名称
+						<div class="content">
+							<img src="../public/img/zl.jpg" >
+							<p>简介：故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入了一场</p>
+						</div>
+					</li>
+				</ul>
+		</div>
+	</body>
+</html>

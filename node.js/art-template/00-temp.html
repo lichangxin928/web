@@ -52,7 +52,14 @@
     {{block 'head'}} <scripte></scripte> {{/block}}
 
     <!-- 模板配置 -->
+    <!-- 导入模板变量 -->
+    template.defaults.imports.dateFormat = dateFormat
+    
+    <!-- 导入模板变量后，就能在模板中进行调用方法 -->
 
-
+    <!-- 设置模板根目录 -->
+    template.defaults.root = path.join(__dirname,'views')
+    <!-- 配置模板的默认后缀 -->
+    template.defaults.extname = '.html'
 </body>
 </html>

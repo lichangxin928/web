@@ -10,64 +10,7 @@
             padding: 0;
             margin: 0;
         }
-        /* ul{
-            width: 100%;
-            height: 500px;
-            position: relative;
-            background-color: skyblue;
-            margin-top: 100px;
-            animation: back 4s linear 0s infinite alternate;
-            overflow: hidden;
-        }
-        li{
-            width: 400%;
-            height: 500px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            list-style: none;
-        }
-        ul li:nth-child(1){
-           background-image:  url("../img/cloud_one.png");
-           animation: one 30s linear 0s infinite alternate;
-        }
-        ul li:nth-child(2){
-            background-image:  url("../img/cloud_two.png");
-            animation: two 30s linear 0s infinite alternate;
-        }
-        ul li:nth-child(3){
-            background-image:  url("../img/cloud_three.png");
-            animation: three 30s linear 0s infinite alternate;
-        }
-        @keyframes back{
-            from{
-                background-color: skyblue;
-            }to{
-                background-color: black;
-            }
-        }
-        @keyframes one{
-            from{
-                margin-left: 0px;
-            }to{
-                margin-left: -100%;
-            }
-        }
-        @keyframes two{
-            from{
-                margin-left: 0px;
-            }to{
-                margin-left: -200%;
-            }
-        }
-        @keyframes three{
-            from{
-                margin-left: 0px;
-            }to{
-                margin-left: -300%;
-            }
-        } */
-        #box{
+        #movie{
             width: 300px;
             height: 161px;
            padding: 100px 0px; 
@@ -75,13 +18,13 @@
             overflow: hidden;
 
         }
-        ul{
+        #movieul{
             width: 1200px;
             height: 161px;
-            animation: roll 10s linear 0s infinite none;
+            animation: roll 3s linear 0s infinite none;
             
         }
-        li{
+        .movieli{
             list-style: none;
             float: left;
         }
@@ -89,18 +32,18 @@
             from{
                 margin-left:0px;
             }to{
-                margin-left: -100%;
+                margin-left: -200%;
             }
         }
     </style>
 </head>
 <body>
-    <div id="box">
-        <ul>
-            <li><img src="../img/b.jpg"></li>
-            <li><img src="../img/c.jpg" alt=""></li>
-            <li><img src="../img/b.jpg" alt=""></li>
-            <li><img src="../img/c.jpg" alt=""></li>
+    <div id="movie">
+        <ul id="movieul">
+            <li class = 'movieli'><img src="../img/b.jpg"></li>
+            <li class = 'movieli'><img src="../img/c.jpg" alt=""></li>
+            <li class = 'movieli'><img src="../img/b.jpg" alt=""></li>
+            <li class = 'movieli'><img src="../img/c.jpg" alt=""></li>
         </ul>
     </div>
 </body>

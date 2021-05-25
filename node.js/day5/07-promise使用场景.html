@@ -91,7 +91,7 @@
           resolve(JSON.parse(oReq.responseText))
         }
         oReq.onerror = function (err) {
-          reject(err)
+          reject(err) 
         }
         oReq.open("get", url, true)
         oReq.send()

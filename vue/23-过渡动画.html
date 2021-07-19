@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .v-enter{
+            opacity: 0;
+        }
+        .v-enter-to{
+            opacity: 1;
+        }
+        .v-enter-active{
+            transition: all 3s;
+        }
+        .v-leave{
+            opacity: 1;
+        }
+        .v-leave-to{
+            opacity: 0;
+        }
+        .v-leave-active{
+            transition: all 3s;
+        }
+    </style>
+</head>
+<body> 
+    <!-- 一个 transition 中只能放一个元素 
+        要进入页面时就执行动画，就在transition中添加 appear 属性
+        想要执行不同的动画效果时， 就设置一个name，这样就会去寻找
+        以name开头的动画
+    -->
+    <div id="app" >
+        <button @click='toggle()'>按钮</button>
+        <transition appear>
+            <div class="box"v-show='isShow' ></div>
+        </transition>
+        <transition>
+            <div class="box"v-show='isShow' ></div>
+        </transition>
+    </div>
+</body>
+<script>
+    let vue = new Vue({
+        el:"#app",
+        data:{
+            isShow:true
+        },
+        methods:{
+            // 不能使用箭头函数
+            toggle(){
+                this.isShow = !this.isShow
+            }
+        }
+    })
+</script>
+</html>

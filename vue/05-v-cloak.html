@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        当网络有延迟时，会先显示没有渲染好的页面，然后
+        当 script 中的数据传输完成过后，才会将页面替换
+        成为渲染完成的页面，此时用 v-cloak 指令，能很
+        好的解决这个问题 
+     -->
+    <div class="app">
+        {{name}}
+    </div>
+</body>
+<script>
+    let vue = new Vue({
+        el:".app",
+        data:{
+            name:"lcx",
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- vue中的 v-html 和 v-text 和
+         原生js中的innerhtml和innertext一样
+    -->
+    <div id="app">
+        <p v-html="name"></p>
+        <p v-text="msg"></p>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            name:"<h1>v-html lcx</h1>",
+            msg:"<h1>v-text lcx</h>"
+        }
+    })
+</script>
+</html>

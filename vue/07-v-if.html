@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        v-else不能单独出现
+        v-if和v-else中间不能出现其它内容
+     -->
+    <div id="app">
+        <p v-if="score >= 80">优秀</p>
+        <p v-else-if="score>=60">合格</p>
+        <p v-else>差</p>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            score:80
+        }
+    })
+</script>
+</html>

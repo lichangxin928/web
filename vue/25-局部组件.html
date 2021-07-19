@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{name}}</p>
+        <abc></abc>
+    </div>
+    <template id = "info">
+        <div>
+            <p>头部</p>
+            <button @click = 'abcFn'>按钮</button>
+            <p>{{med}}</p>
+            <p>尾部</p>
+        </div>
+    </template>
+</body>
+<script>
+    let vue = new Vue({
+        el:'#app',
+        data () {
+            return {
+                name:'lcx'
+            }
+        },
+        methods: {
+            
+        },
+        computed: {
+            
+        },
+        components: {
+            "abc":{
+                template:'#info',
+                // 组件中的 data 是函数的原因是为了保证
+                // 每次生成的组件中的数据互不影响
+                data () {
+                    return {
+                         med:'中部'   
+                    }
+                },
+                methods:{
+                    abcFn(){
+                        alert('abcFn');
+                    }
+                }
+            },
+           
+        }
+})
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- vue 会吧 name 叫给指定过滤器处理后，再将结果插入 -->
+        <p>{{name | formatStr1}}</p>
+    </div>
+</body>
+<script>
+    // 自定义全局过滤器
+    /**
+     * 两个参数：
+     * 第一个参数：过滤器名称
+     * 第二个参数：处理数据的函数
+     * 默认情况下处理数据的函数接受一个数据，就是当前要被处理的数据
+     *
+     * 
+     * 只能在 插值语法 或者 v-bind 中使用
+     * 过滤器能够连续使用 
+    */
+
+    // 全局过滤器
+    Vue.filter('formatStr',(value)=>{
+        console.log(value)
+        // 要将处理后的结果返回
+        value = value.replace('aaa','change');
+        return value;
+    })
+    let vue = new Vue({
+        el:'#app',
+        data:{
+            name:'aaa bbb ccc ddd eee '
+        },
+        // 局部过滤器
+        filters:{
+            'formatStr1':(value)=>{
+                value = value.replace('aaa','change');
+                return value;
+            }
+
+        }
+
+    })
+</script>
+</html>

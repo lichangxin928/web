@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{time | dateFormart()}}</p>
+    </div>
+</body>
+<script>
+    // 在使用过滤器时，可以加上括号，给过滤器传递参数
+    Vue.filter('dateFormart',(value)=>{
+        let date = new Date(value);
+        let year = date.getFullYear() + '';
+        let mouth = date.getMonth() + 1 +'';
+        let day = date.getDate()+ '';
+        let hour = date.getHours()+ '';
+        let minute = date.getMinutes()+ '';
+        let second = date.getSeconds()+ '';
+        return `${year}-${mouth}-${day.padStart(2,'0')}  ${hour.padStart(2,'0')}:${minute.padStart(2,'0')}:${second.padStart(2,'0')}`
+    })
+    let vue = new Vue({
+        el:'#app',
+        data:{
+            time: Date.now()
+        }
+    })
+</script>
+</html>

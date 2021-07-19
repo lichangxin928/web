@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 导入 vue.js -->
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{name}}</p>
+    </div>
+</body>
+<script>
+    // 创建一个vue的实例对象
+
+    let vue = new Vue({
+        el:'#app',
+        data:{
+            name:'数据'
+        }
+    })
+</script>
+</html>

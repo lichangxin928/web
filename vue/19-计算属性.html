@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{name}}</p>
+        <p>{{age + 1}}</p>
+        <p>{{msg.split("").reverse().join('')}}</p>
+        <p>{{msg2}}</p>
+    </div>
+</body>
+<script>
+    let vue = new Vue({
+        el: '#app',
+        data: {
+            name: 'lcx',
+            age: '18',
+            msg: 'abcdef'
+        },
+        methods: {},
+        // 专门定义计算属性
+        computed: {
+            msg2: () => {
+                let res = "abcdef".split('').reverse().join('');
+                return res;
+            }
+        }
+    })
+</script>
+
+</html>

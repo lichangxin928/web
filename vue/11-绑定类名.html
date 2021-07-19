@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>12-常用指令-绑定类名</title>
+    <script src="js/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .size {
+            font-size: 100px;
+        }
+
+        .color {
+            color: red;
+        }
+
+        .active {
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+   <div id="app">
+       <p :class="obj">class</p>
+   </div>
+</body>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                // obj:"size color active"
+                // obj:["size","color","active"]
+                // obj:'["size","color","{flag?'':active}"]'
+                // obj:{
+                //     'size': false,
+                //     'color': false,
+                //     'active': true,
+                // }
+            }
+        })
+    </script>
+</html>

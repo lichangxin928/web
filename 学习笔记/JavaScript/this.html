@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+    <style>
+        .div0{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        .div1 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            // 1. 在函数中的 this 和全局环境下的 this 都是指的 window 对象
+            (function abc() {
+
+                console.log(this);
+            })()
+
+            // 2. 在添加的事件中的 this
+            document.querySelector('.div0').addEventListener('click', clickHeader)
+            function clickHeader(e) {
+                // 显示绑定事件的对象
+                console.log(this)
+                // 显示绑定的对象
+                console.log(e.currentTarget)
+                // e.target 表示实际上点击的对象
+                console.log(e.target)
+            }
+
+            // 3. 在对象中的this
+
+            let obj = {
+                a:1,
+                b:function(){
+                    // 这里面的 this 代表这个对象
+                    console.log(this.a)
+                }
+            }
+            obj.b()
+
+            // 4. 在面向对象中的应用
+            // this 指的都是实例化后的对象
+            // es5
+            function people(age,sex){
+                this.age = age;
+                this.sex =sex;
+                
+            }
+            people.prototype.add = function(){
+                    console.log(this.age + this.sex)
+            }
+            
+            let tom = new people(10,20)
+            console.log(people.prototype)
+            tom.add();
+
+            // es6
+            class ball{
+                constructor(a,b){
+                    this.a = a;
+                    this.b = b;
+                }
+                e(){
+                    console.log(this.a+this.b)
+                }
+            }
+            let ball1 = new ball(1,2)
+            ball1.e()
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="div0">
+        <div class="div1"></div>
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖动</title>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let divs = document.querySelectorAll('div');
+            for (let i = 0; i < divs.length; i++) {
+                divs[i].addEventListener('mousedown', mouseHandler);
+            }
+            function mouseHandler(e) {
+                if (e.type === 'mousedown') {
+                    document.addEventListener('mousemove', mouseHandler);
+                    document.point = { x: e.offsetX, y: e.offsetY }
+                    document.self = this;
+                    this.addEventListener('mouseup', mouseHandler);
+                } else if (e.type === 'mousemove') {
+                    this.self.style.left = e.x - this.point.x + 'px';
+                    this.self.style.top = e.y - this.point.y + 'px';
+                } else if (e.type === 'mouseup') {
+                    document.removeEventListener('mousemove', mouseHandler);
+                    this.removeEventListener('mouseup', mouseHandler);
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

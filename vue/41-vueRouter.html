@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vueRouter</title>
+    <script src="./js/vue.js"></script>
+    <!-- 都是必须点导入vue -->
+    <script src="./js/vuex.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <a href="#/one">切换到第一个页面</a>
+        <a href="#/two">切换到第二个页面</a>
+        <router-view></router-view>
+    </div>
+    <!-- 是用来切换组件的 
+        v-if和v-show是true、false来确定的
+        vuerouter 是利用哈希来切换的（#abc）
+    -->
+    <template id="one">
+        <div class="onepage">
+            这是第一个页面
+        </div>
+    </template>
+    <template id="two">
+        <div class="twopage">
+            这是第二个页面
+        </div>
+    </template>
+</body>
+<script>
+    // 1.定义组件
+    const one = {
+        template:'#one'
+    }
+    const two = {
+        template:'#two'
+    }
+    // 2.定义路由的规则
+    const routes = [
+        //数组中的每一个对象是一条规则
+        {path:'/one',component:one},
+        {path:'/two',component:two}
+    ];
+    // 3.创建router事例
+    const router = new VueRouter({
+        routes:routes
+    })
+
+    let vue = new Vue({
+        // 4.将创建好的路由对象绑定到vue实例上
+        el:'#app',
+        router:router,
+        components:{
+            one:one,
+            two:two
+        }
+    })
+</script>
+</html>

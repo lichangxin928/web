@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多级传递</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <grandfather>
+        </grandfather>
+    </div>
+    <template id="grandfather">
+        <div>
+            <p>grandfather</p>
+            {{gfname}}
+            <button @click='say'>按钮</button>
+            <father @gfsay = 'say' :fname = 'gfname'></father> 
+        </div>
+    </template>
+    <template id="father">
+        <div>
+            <p>father</p>
+            {{fname}}
+            <button @click='fsay'>按钮</button>
+            <son @fsay = 'fsay' :name = 'fname'></son>
+        </div>
+    </template>
+    <template id="son">
+        <div>
+            <p>son</p>
+            <button @click='say'>按钮</button>
+            {{name}}
+        </div>
+    </template>
+</body>
+<script>
+    let vue = new Vue({
+        el:'#app',
+        components:{
+            "grandfather":{
+                template:'#grandfather',
+                data:()=>{
+                    return {
+                        gfname:'lcx'
+                    }
+                },
+                methods:{
+                    say(){
+                        alert('hello')
+                    }
+                },
+                components:{
+                    'father':{
+                        template:'#father',
+                        methods:{
+                            fsay(){
+                                this.$emit('gfsay')
+                            }
+                        },
+                        props:['fname'],
+                        components:{
+                            'son':{
+                                methods:{
+                                    say(){
+                                        this.$emit('fsay')
+                                    }
+                                },
+                                template:'#son',
+                                props:['name'],
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>

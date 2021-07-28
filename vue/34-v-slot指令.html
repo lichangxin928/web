@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>具名插槽</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <son>
+            <template v-slot:one>
+                <div>one</div>
+                <div>oneone</div>
+            </template>
+            <template #two>
+                <div>two</div>
+                <div>two</div>
+            </template>
+        </son>
+    </div>
+    <template id="son">
+        <div>
+            <div>head</div>
+            <!-- 通过添加name属性，通过name来指定插槽的名称 -->
+            <slot name='one'>默认数据one</slot>
+            <slot name='two'>默认数据two</slot>
+            <div>foot</div>
+        </div>
+    </template>
+</body>
+<script>
+    let vue = new Vue({
+        el:'#app',
+        components:{
+            son:{
+                template:'#son'
+            }
+        }
+    })
+</script>
+</html>

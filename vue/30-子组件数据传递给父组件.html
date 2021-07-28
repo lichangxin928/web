@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子组件传递数据给父组件</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <father></father>
+    </div>
+    <template id="father">
+        <div>
+            <p @click='say'>father</p>
+            <son @sonsay='say'></son>
+        </div>
+    </template>
+    <template id="son">
+        <div>
+            <p @click='sonfn'>son</p>
+        </div>
+    </template>
+</body>
+<script>
+    let vue = new Vue({
+        el: '.app',
+        components: {
+            'father': {
+                template: '#father',
+                methods: {
+                    say(age) {
+                        console.log(age)
+                    }
+                },
+                components: {
+                    'son': {
+                        template: '#son',
+                        data:function(){
+                            return {
+                                age:18
+                            }
+                        },
+                        methods: {
+                            sonfn() {
+                                this.$emit('sonsay',this.age)
+                            }
+                        }
+                    },
+
+                }
+            }
+        }
+    })
+</script>
+
+</html>

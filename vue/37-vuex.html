@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vuex</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <father></father>
+    </div>
+
+    <template id="father">
+        <div>
+            <son1 @numchange='change'></son1>
+            <son2 :fathernum='num'></son2>
+        </div>
+    </template>
+    <template id='son1'>
+        <div>
+            <button @click='add'>add</button>
+            <button @click='sub'>sub</button>
+            <input type="text" :value="count">
+        </div>
+    </template>
+    <template id="son2">
+        <div>
+            <!-- 在子组件中使用父组件的数据就要进行数据传递 
+                兄弟组件不能直接传递数据，要借助父组件
+            -->
+            <!-- 
+                虽然通过父组件能够实现通过兄弟之间数据传递，但是非常的不推荐
+             -->
+            <p>{{fathernum}}</p>
+        </div>
+    </template>
+</body>
+<script>
+    Vue.component('father', {
+        template: '#father',
+        methods: {
+            change(newCount) {
+                this.num = newCount;
+            }
+        },
+        data: () => {
+            return {
+                num: 0
+            }
+        },
+        components: {
+            "son1": {
+                template: '#son1',
+                data: () => {
+                    return {
+                        count: 0
+                    }
+                },
+                methods: {
+                    add() {
+                        this.count++;
+                        this.$emit('numchange', this.count);
+                    },
+                    sub() {
+                        this.count--;
+                        this.$emit('numchange', this.count);
+                    },
+                }
+            },
+            "son2": {
+                template: '#son2',
+                props: ['fathernum']
+            }
+        },
+
+    })
+    let vue = new Vue({
+        el: '#app'
+    })
+</script>
+
+</html>

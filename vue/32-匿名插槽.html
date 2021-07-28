@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匿名插槽</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 默认情况下不能在自定义组件中增加内容的
+        如果想要使用子组件的时候动态添加内容的时候就要用到插槽
+        有多少个匿名插槽就会拷贝多少个
+    -->
+    <div id="app">
+        <son>
+            <div>aaaa</div>
+        </son>
+    </div>
+    <template id="son">
+        <div>
+            <div>head</div>
+            <!-- slot标签就是默认的插槽，可以根据自己的需要来添加数据 -->
+            <slot>我是默认数据</slot>
+            <div>foot</div>
+        </div>
+        
+    </template>
+</body>
+<script>
+    let vue = new Vue({
+        el:'#app',
+        components:{
+            son:{
+                template:'#son'
+            }
+        }
+    })
+</script>
+</html>

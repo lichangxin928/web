@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域插槽</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 作用域插槽就是让父组件在填充子组件插槽内容的时候也能使用子组件的数据 -->
+    <div id="app">
+        <son>
+            <template slot-scope='abc'>
+                <div>默认{{abc.names}}</div>
+            </template>
+        </son>
+    </div>
+    <template id="son">
+        <div>
+            <div>我是头部</div>
+            <!-- 将当前子组件的数据暴露给父组件 -->
+            <slot v-bind:name = 'names'>默认数据{{name}}</slot>
+            <div>尾部</div>
+        </div>
+
+    </template>
+</body>
+<script>
+    let vue = new Vue({
+        el: '#app',
+        components: {
+            son:{
+                template:'#son',
+                data:()=>{
+                    return {
+                        name:['zs','ks','ww']
+                    }
+                }
+            }
+
+        }
+    })
+</script>
+
+</html>

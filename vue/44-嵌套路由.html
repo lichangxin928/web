@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vueRouter</title>
+    <script src="./js/vue.js"></script>
+    <!-- 都是必须点导入vue -->
+    <script src="./js/vuex.js"></script>
+    <script src="./js/vue-router.js"></script>
+    <style>
+        /* 点击的默认会添加这个类名 */
+        /* .router-link-active{
+            background-color: red;
+        } */
+        .nj-active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/one" tag="button">切换到第一个界面</router-link>
+        <router-link to="/two" tag="button">切换到第二个界面</router-link>
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div> 
+    <template id="one">
+        <div class="onepage">
+            <p>我是第一个界面</p>
+            <router-link to="/one/onesub1" tag="button">切换到第一个子界面</router-link>
+            <router-link to="/one/onesub2" tag="button">切换到第二个子界面</router-link>
+            <!-- 路由出口 -->
+            <!-- 路由匹配到的组件将渲染在这里 -->
+            <router-view></router-view>
+        </div>
+    </template>
+    <template id="onesub1">
+        <div class="onesub1page">
+            <p>我是第一个界面子界面1</p>
+        </div>
+    </template>
+    <template id="onesub2">
+        <div class="onesub2page">
+            <p>我是第一个界面子界面2</p>
+        </div>
+    </template>
+    <template id="two">
+        <div class="twopage">
+            <p>我是第二个界面</p>
+        </div>
+    </template>
+
+</body>
+<script>
+    const onesub1 = {
+        template: '#onesub1'
+    }
+    const onesub2 = {
+        template: '#onesub2'
+    }
+    const one = {
+        template: '#one',
+        components: {
+            onesub1: onesub1,
+            onesub2: onesub2
+        }
+    }
+    const two = {
+        template: '#two',
+    }
+
+    const routes = [
+        {
+            // 子路由
+            path: '/one',
+            component: one,
+            children:[
+                {
+                    path: "onesub1",
+                    component: onesub1
+                },
+                {
+                    path: 'onesub2',
+                    component: onesub2
+                }
+            ]
+        },
+        { path: '/two', component: two },
+    ];
+    const router = new VueRouter({
+        routes: routes,
+        linkActiveClass: 'nj-active'
+    })
+
+    let vue = new Vue({
+        el: '#app',
+        router: router,
+        components: {
+            one: one,
+            two: two,
+            // onesub1: onesub1,
+            // onesub2: onesub2
+        }
+    })
+</script>
+
+</html>

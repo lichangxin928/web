@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vuex基本使用</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/vuex.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <grandfather></grandfather>
+    </div>
+    <!-- 爷爷组件模板 -->
+    <template id="grandfather">
+        <div>
+            {{this.$store.state.msg}}
+            <father></father>
+        </div>
+    </template>
+    <!-- 父亲组件模板 -->
+    <template id="father">
+        <div> {{this.$store.state.msg}}
+            <son></son>
+        </div>
+    </template>
+    <!-- 儿子组件模板 -->
+    <template id="son">
+        <div> {{this.$store.state.msg}}</div>
+    </template>
+</body>
+<script>
+    const store = new Vuex.Store({
+        // state 相当于data 所有数据都保存在这里
+        state: {
+            msg: 'lcx'
+        }
+    })
+    // 涉及到全局的都写在最前面
+    Vue.component('grandfather', {
+        template: '#grandfather',
+        store: store,
+        components: {
+            'father': {
+                template: '#father',
+                components: {
+                    'son': {
+                        template: '#son'
+                    }
+                }
+            }
+        }
+    })
+    let vue = new Vue({
+        el: '#app',
+        // components: {
+        //     'grandfather': {
+        //         template: '#grandfather',
+        //         store: store,
+        //         components: {
+        //             'father': {
+        //                 template: '#father',
+        //                 components: {
+        //                     'son': {
+        //                         template: '#son'
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+    })
+    
+
+</script>
+
+</html>

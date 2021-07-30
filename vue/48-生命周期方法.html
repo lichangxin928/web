@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期方法</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script>
+    let vue = new Vue({
+        el:"#app",
+        beforeUpdate() {
+            // 只有在数据发生变化的时候才会调用这个方法
+            // 在调用这个方法过后，数据已经发生更新了，
+            // 但是界面还没有更新
+        },
+        updated() {
+            // 在调用这个方法表示vue保存的数据被修改了，并且界面也同步了修改的数据
+            // 也就是说界面和数据都更新了
+        },
+    })
+</script>
+</html>

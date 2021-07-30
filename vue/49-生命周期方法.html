@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期方法</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script>
+    let vue = new Vue({
+        el:"#app",
+        beforeDestroy() {
+            // 还没有销毁，在销毁前会执行这个函数，表示当前组件即将销毁
+            // 只要组件不被销毁，就不会执行这个函数
+        },
+        destroyed() {
+            // 表示这个组件完全销毁的时候就会被调用
+            // 不能在这里操作组件中的数据和方法
+        },
+    })
+</script>
+</html>

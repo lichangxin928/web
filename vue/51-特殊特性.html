@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特殊特性</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!--  -->
+    <div id="app">
+        <button @click='myFn'>按钮</button>
+        <div id="div" ref="dom">原生dom</div>
+        <one id='oneaa' ref="free"></one>
+    </div>
+
+    <template id="one">
+        <div>
+            <p>我是组件</p>
+        </div>
+    </template>
+</body>
+<script>
+    // Vue.component('one',{
+    //     template:'#one'
+    // }
+    let vue = new Vue({
+        el:'#app',
+        methods: {
+            myFn(){
+                // 如果通过原生的方法来获取元素，拿到的都是原生的组件
+                // vue 官方不推荐这样获取
+                // let div = document.querySelector('#div');
+                // let son = document.querySelector('#oneaa')
+                // console.log(div)
+                // console.log(son)
+                // 通过ref来获取自定义元素，拿到的就是自定义的组件
+                console.log(this.$refs.free)
+                console.log(this.$refs.dom)
+            }
+        },
+        components:{
+            'one':{
+                template:"#one"
+            }
+        }
+    })
+</script>
+</html>

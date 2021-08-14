@@ -1,32 +1,41 @@
+<!--组件结构代码-->
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+      <router-link to='/one' tag="button">go to one</router-link>
+      <router-link to='/two' tag="button">go to two</router-link>
+      <!-- <One></One> -->
+      <!-- <button @click='getName'>获取共享数据</button> -->
+      <!-- <Two></Two> -->
+      <router-view></router-view>
+      <el-row>
+        <el-button>默认按钮</el-button>
+        <el-button type="primary">主要按钮</el-button>
+        <el-button type="success">成功按钮</el-button>
+        <el-button type="info">信息按钮</el-button>
+        <el-button type="warning">警告按钮</el-button>
+        <el-button type="danger">危险按钮</el-button>
+      </el-row>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+// import One from './components/One.vue';
+// import Two from './components/Two.vue'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  name: "App",
+  components:{
+    //   One:One,
+    //   Two:Two
+  },
+  methods:{
+      getName(){
+          alert(this.$store.state.name)
+      }
   }
-}
+};
+</script>
+
+
+<style >
 </style>

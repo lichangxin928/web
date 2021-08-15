@@ -11,7 +11,14 @@ Vue.use(Row).use(Button).use(Switch)
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
-    render: c => c(App),
+    // 如果没有参数，或有多个参数就需要（）来定义参数列表
+    // 如果有一个参数，可以不用（）
+    // 如果函数体积中只有一条语句，可以不用{}，就不用使用 return 会自动加上
+    // render: function(createfn){
+    //     return createfn(App)
+    // },
+    // 这里的 c 表示create方法，c(App)则是表示返回语句只有这一行，不加花括号
+    render:c => c(App),
     store:store,
     router:router
 })

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="testGet()">GET</button>
+        <button onclick="testPost()">POST</button>
+        <button onclick="testPut()">PUT</button>
+        <button onclick="testDelete()">DELETE</button>
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+<script>
+    function testGet(){
+        axios.get('http://127.0.0.1:3000/posts')
+            .then(response=>{
+                console.log('/posts-get',response.data)
+            })
+    }
+    function testPost(){
+        axios.post('http://127.0.0.1:3000/posts',{"title":"json-server3","author":"typicode3"})
+            .then(response=>{
+                console.log('/posts-post',response.data)
+            })
+    }
+    function testPut(){
+        axios.put('http://127.0.0.1:3000/posts/3',{"title":"json-server...","author":"typicode3...."})
+            .then(response=>{
+                console.log('/posts-put',response.data)
+            })
+    }
+    function testDelete(){
+        axios.delete('http://127.0.0.1:3000/posts/3')
+            .then(response=>{
+                console.log('/posts-put',response.data)
+            })
+    }
+</script>
+</html>

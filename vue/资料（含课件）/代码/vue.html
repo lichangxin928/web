@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 5
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        1. 插值语法中不仅是 data 中的数据，也能是 js 语句，methods 都能够被解析
+        2. vue 中的实例和组件是一对一的
+        3. v-bind 改变标签属性 简写为 ：
+        4. 不能使用箭头函数，会导致 this 丢失
+        5. data中的数据最终会到 vue 实例中
+        6. Object.defineProperty() 可以直接添加属性，但是不能被枚举 可以通过 enumerable 来更改
+           writable 控制属性是否能被修改  configurable 控制是否可以删除
+           defineProperty() 中的 get() 和 set() 方法来实现数据双向绑定
+        7. 数据代理：通过一个对象代理对另一个对象中属性的操作
+        8. 事件处理的时候如果要传递参数，用 $event 来占位避免dom被传递的参数丢失
+        9. 函数能够写在 data 中，但是如果写在 data 中就会对函数进行数据代理，会影响到 vue 的性能
+        10. 事件修饰符
+        11. 计算属性 compued
+        12. data 数据发生了改变 vue 会重新解析模板，会重新调用相关函数      
+        13. 监视属性 watch hander(newValue oldValue) 函数 当数据发生改变时就调用  immediate 可以做到初始化调用hander
+        14. vm.$watch 来监视属性
+        15. 深度监视 监视多级结构中的某个属性 deep:true 开启深度监视
+        16. v-for = "(value index) in(可用of) person" 不仅能遍历数组和对象，也能遍历字符串和指定次数 
+        17. v-for 中的key 给节点进行一个标识 diff 算法 默认情况下 key 的值为 index
+        18. 列表的过滤 Array.filter(value){ return 判断条件}    
+        19. 生命周期中的beforeDestroy() 方法只能读取到数据，修改数据不会触发更新 create 是创建数据代理 数据监测
+        20. 组件定义时不要写 el 因为要复用
+        21. 组件简写版本会自动调动 extend 方法
+        22. 组件的本质实际上是一个构造函数，在解析时相当于调用了构造方法 每次调用 Vue.extend() 时 返回的都是一个新的 VueComponent
+        23. 组件中的 this 指向: methods data watch computed 的指向都是 VueComponent（组件的实例对象）   
+        24. ref 属性 this.$refs.value 可以获得元素                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+        
+    
+    -->
+    
+</body>
+</html>

@@ -29,6 +29,7 @@
         // 专门定义计算属性
         computed: {
             msg2: () => {
+                console.log(this)
                 let res = "abcdef".split('').reverse().join('');
                 return res;
             }

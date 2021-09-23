@@ -11,6 +11,8 @@
     <div id="app">
         <p>{{name}}</p>
         <abc></abc>
+        <hr>
+        <school></school>
     </div>
     <template id = "info">
         <div>
@@ -20,8 +22,24 @@
             <p>尾部</p>
         </div>
     </template>
+    <template id="school">
+        <div>
+            <h1>{{name}}</h1>
+            <h1>{{address}}</h1>
+        </div>
+    </template>
 </body>
 <script>
+    // 第一步 创建组件
+    const school = Vue.extend({
+        template:'#school',
+        data(){
+            return {
+                name:'lcx',
+                address:'chengdu'
+            }
+        }
+    })
     let vue = new Vue({
         el:'#app',
         data () {
@@ -36,6 +54,7 @@
             
         },
         components: {
+            school:school,
             "abc":{
                 template:'#info',
                 // 组件中的 data 是函数的原因是为了保证
